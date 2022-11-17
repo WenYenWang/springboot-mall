@@ -1,7 +1,7 @@
 package com.wywang.springbootmall.service.impl;
 
-import com.wywang.springbootmall.constant.ProductCategory;
 import com.wywang.springbootmall.dao.ProductDao;
+import com.wywang.springbootmall.dto.ProductQueryParams;
 import com.wywang.springbootmall.dto.ProductRequest;
 import com.wywang.springbootmall.model.Product;
 import com.wywang.springbootmall.service.ProductService;
@@ -14,8 +14,8 @@ import java.util.List;
 public class ProductServiceImpl implements ProductService {
 
     @Override
-    public List<Product> getProducts(ProductCategory category, String search) {
-        return productDao.getProducts(category, search);
+    public List<Product> getProducts(ProductQueryParams productQueryParams) {
+        return productDao.getProducts(productQueryParams);
     }
 
     @Autowired

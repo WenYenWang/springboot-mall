@@ -1,6 +1,7 @@
 package com.wywang.springbootmall.controller;
 
 import com.wywang.springbootmall.constant.ProductCategory;
+import com.wywang.springbootmall.dto.ProductQueryParams;
 import com.wywang.springbootmall.dto.ProductRequest;
 import com.wywang.springbootmall.model.Product;
 import com.wywang.springbootmall.service.ProductService;
@@ -22,9 +23,12 @@ public class ProductController {
     public ResponseEntity<List<Product>> getProducts(
             @RequestParam(required = false) ProductCategory category,
             @RequestParam(required = false) String search
-            ){
+    ){
+        ProductQueryParams productQueryParams = new ProductQueryParams();
+        productQueryParams.setCategory(category);
+        productQueryParams.setSearch(search);
 
-        List<Product> productList = productService.getProducts(category,search);
+        List<Product> productList = productService.getProducts(productQueryParams);
         return ResponseEntity.status(HttpStatus.OK).body(productList);
     }
 
