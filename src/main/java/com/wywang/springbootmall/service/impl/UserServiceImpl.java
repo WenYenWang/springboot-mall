@@ -1,6 +1,7 @@
 package com.wywang.springbootmall.service.impl;
 
 import com.wywang.springbootmall.dao.UserDao;
+import com.wywang.springbootmall.dto.UserLoginRequest;
 import com.wywang.springbootmall.dto.UserRegisterRequest;
 import com.wywang.springbootmall.model.User;
 import com.wywang.springbootmall.service.UserService;
@@ -35,5 +36,22 @@ public class UserServiceImpl implements UserService {
 
         //註冊帳號
         return userDao.createUser(userRegisterRequest);
+    }
+
+    @Override
+    public User login(UserLoginRequest userLoginRequest) {
+        User user = userDao.getUserByEmail(userLoginRequest.getEmail());
+
+        if(user == null){
+            log.warn("該　email {} 尚未註冊", userLoginRequest.getEmail());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
+
+        if(user.getPassword().equals(userLoginRequest.getPassword())) {
+            return user;
+        }else {
+            log.warn("該　email {} 的密碼不正確", userLoginRequest.getEmail());
+            throw new ResponseStatusException(HttpStatus.BAD_REQUEST);
+        }
     }
 }

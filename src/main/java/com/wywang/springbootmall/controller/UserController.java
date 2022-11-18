@@ -1,5 +1,6 @@
 package com.wywang.springbootmall.controller;
 
+import com.wywang.springbootmall.dto.UserLoginRequest;
 import com.wywang.springbootmall.dto.UserRegisterRequest;
 import com.wywang.springbootmall.model.User;
 import com.wywang.springbootmall.service.UserService;
@@ -8,9 +9,11 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
+import java.awt.desktop.UserSessionListener;
 
 @RestController
 public class UserController {
@@ -25,5 +28,12 @@ public class UserController {
         User user = userService.getUserById(userId);
 
         return ResponseEntity.status(HttpStatus.CREATED).body(user);
+    }
+
+    @PostMapping("/users/login")
+    public ResponseEntity<User> login(@RequestBody @Valid UserLoginRequest userLoginRequest){
+        User user = userService.login(userLoginRequest);
+
+        return ResponseEntity.status(HttpStatus.OK).body(user);
     }
 }
