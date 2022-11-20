@@ -11,7 +11,7 @@ public class User {
     private String email;
     @JsonIgnore
     private String password;
-    private Date createDate;
+    private Date createdDate;
     private Date lastModifiedDate;
 
     public Integer getUserId() {
@@ -38,12 +38,12 @@ public class User {
         this.password = password;
     }
 
-    public Date getCreateDate() {
-        return createDate;
+    public Date getCreatedDate() {
+        return createdDate;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
+    public void setCreatedDate(Date createdDate) {
+        this.createdDate = createdDate;
     }
 
     public Date getLastModifiedDate() {

@@ -2,9 +2,7 @@ package com.wywang.springbootmall.dao.impl;
 
 import com.wywang.springbootmall.dao.UserDao;
 import com.wywang.springbootmall.dto.UserRegisterRequest;
-import com.wywang.springbootmall.model.Product;
 import com.wywang.springbootmall.model.User;
-import com.wywang.springbootmall.rowmapper.ProductRowMapper;
 import com.wywang.springbootmall.rowmapper.UserRowMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.namedparam.MapSqlParameterSource;

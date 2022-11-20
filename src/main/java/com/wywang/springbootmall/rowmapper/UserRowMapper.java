@@ -1,7 +1,5 @@
 package com.wywang.springbootmall.rowmapper;
 
-import com.wywang.springbootmall.constant.ProductCategory;
-import com.wywang.springbootmall.model.Product;
 import com.wywang.springbootmall.model.User;
 import org.springframework.jdbc.core.RowMapper;
 
@@ -18,7 +16,7 @@ public class UserRowMapper implements RowMapper<User> {
         user.setUserId(resultSet.getInt("user_id"));
         user.setEmail(resultSet.getString("email"));
         user.setPassword(resultSet.getString("password"));
-        user.setCreateDate(resultSet.getTimestamp("created_date"));
+        user.setCreatedDate(resultSet.getTimestamp("created_date"));
         user.setLastModifiedDate(resultSet.getTimestamp("last_modified_date"));
 
         return user;
